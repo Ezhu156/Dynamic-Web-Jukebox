@@ -2,6 +2,7 @@ var playButton = document.getElementById("playButton");
 var nextButton = document.getElementById("nextButton");
 var prevButton = document.getElementById("prevButton");
 var shufButton = document.getElementById("shuffleButton");
+var stopButton = document.getElementById("stopButton");
 var currIndex = 0;
 var music = document.getElementById('music');
 var albumCover = document.getElementById('album');
@@ -110,6 +111,14 @@ function changeQueue(array){
 	}
 }
 
+function stop(){
+    playButton.src= "play.png";
+    var temp = music.src;
+    music.src = " ";
+    music.src = temp;
+    music.pause();
+}
+
 //jukebox class that contains the basic functions of a music player
 class Jukebox{
 	constructor(){
@@ -153,6 +162,7 @@ playButton.addEventListener("click", play);
 nextButton.addEventListener("click", myJukebox.next);
 prevButton.addEventListener("click", myJukebox.prev);
 shufButton.addEventListener("click", myJukebox.shuffle);
+stopButton.addEventListener("click", stop);
 
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures#Creating_closures_in_loops.3A_A_common_mistake
 //https://teamtreehouse.com/community/for-loops-onclick
